@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
-export default ({ onChangeInput, currentTodo, refInput }) => {
+export default function TodoForm({ onChangeInput, currentTodo, refInput }) {
 	return (
 		<form action="">
       <input 
@@ -12,3 +12,9 @@ export default ({ onChangeInput, currentTodo, refInput }) => {
     </form>
 	);
 }
+
+TodoForm.propTypes = {
+  onChangeInput: PropTypes.func.isRequired,
+  refInput: PropTypes.func.isRequired,
+  currentTodo: PropTypes.string.isRequired
+};
