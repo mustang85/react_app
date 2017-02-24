@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-
 import { TodoForm, TodoList } from './Todo';
+import { addTodo, generateId } from './lib/todoHelpers';
 
 class App extends Component {
   constructor() {
@@ -23,8 +23,31 @@ class App extends Component {
     });
   }
 
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const newTodo = {
+      id: generateId(), 
+      text: this.state.currentTodo, 
+      isComplete: false
+    };
+    this.setState({
+      todos: addTodo(this.state.todos, newTodo),
+      currentTodo: '',
+      errorMessage: ''
+    });
+  }
+
+  handleEmptySubmit = (e) => {
+    e.preventDefault();
+    this.setState({
+      errorMessage: 'Please supply a todo name'
+    });
+  }
+
   render() {
-    const { todos, currentTodo } = this.state;
+    const { todos, currentTodo, errorMessage } = this.state;
+
+    const submitHandler = currentTodo ? this.handleSubmit : this.handleEmptySubmit;
 
     return (
       <div className="App">
@@ -33,10 +56,12 @@ class App extends Component {
           <h2>Welcome to React</h2>
         </div>
         <div className="Todo">
+          { errorMessage && <span className="error">{errorMessage}</span> }
           <TodoForm 
             onChangeInput={this.handleInputChange}
             currentTodo={currentTodo}
             refInput={(input) => this.inputValue = input}
+            handleSubmit={submitHandler}
           />
           <TodoList todos={todos} />
         </div>
