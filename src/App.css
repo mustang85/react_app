@@ -57,3 +57,7 @@ li:hover span.delete-item {
 .error {
   color: red;
 }
+
+.footer a {
+  padding: 0 2px;
+}

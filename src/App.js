@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { TodoForm, TodoList } from './Todo';
+import { TodoForm, TodoList, Footer } from './components/Todo';
 import { 
   addTodo, generateId, findById, 
   toggleTodo, updateTodo, removeTodo } from './lib/todoHelpers';
@@ -83,6 +83,7 @@ class App extends Component {
           <TodoList handleToggle={this.handleToggle} 
             todos={todos}
             handleRemove={this.handleRemove} />
+          <Footer />
         </div>
       </div>
     );

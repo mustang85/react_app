@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import { partial } from '../lib/utils';
+import { partial } from '../../lib/utils';
 
 
 export default function TodoItem(props) {
