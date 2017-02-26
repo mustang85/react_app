@@ -13,4 +13,11 @@ export const updateTodo = (list, updated) => {
   	updated,
   	...list.slice(updatedIndex + 1)
   ]
+};
+
+export const removeTodo = (list, id) => {
+  const currentList = [...list];
+  currentList.splice(id-1, 1);
+  return currentList;
 }
+

@@ -2,17 +2,24 @@ import React, { PropTypes } from 'react';
 import { partial } from '../lib/utils';
 
 
-export default function TodoInput(props) {
-	const { id, text, isComplete } = props;
-	const handleToggle = partial(props.handleToggle, id);
-	return (
-		<li key={id}>
-      <input type="checkbox" onChange={handleToggle} checked={isComplete} /> {text}
+export default function TodoItem(props) {
+  const { id, text, isComplete } = props;
+  const handleToggle = partial(props.handleToggle, id);
+  const handleRemove = partial(props.handleRemove, id);
+  return (
+	<li key={id}>
+	  <span className="delete-item">
+	  	<a href="#" onClick={handleRemove}>X</a>
+	  </span>
+      <input type="checkbox" 
+        onChange={handleToggle} 
+        checked={isComplete} 
+      /> {text}
     </li>
-	);
+  );
 }
 
-TodoInput.propTypes = {
+TodoItem.propTypes = {
 	text: PropTypes.string.isRequired,
 	isComplete: PropTypes.bool.isRequired,
 	id: PropTypes.number.isRequired
