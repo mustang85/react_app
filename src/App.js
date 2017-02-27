@@ -55,7 +55,12 @@ class App extends Component {
       errorMessage: ''
     });
     createTodo(newTodo)
-      .then(() => console.log('Todo added'))
+      .then(() => this.showTempMessage('Todo added'));
+  }
+
+  showTempMessage = (msg) => {
+    this.setState({message: msg});
+    setTimeout(() => this.setState({message: ''}), 2500)
   }
 
   handleEmptySubmit = (e) => {
@@ -72,7 +77,7 @@ class App extends Component {
   }
 
   render() {
-    const { todos, currentTodo, errorMessage } = this.state;
+    const { todos, currentTodo, errorMessage, message } = this.state;
 
     const submitHandler = currentTodo ? this.handleSubmit : this.handleEmptySubmit;
     const displayTodos = filterTodos(todos, this.context.route)
@@ -87,6 +92,7 @@ class App extends Component {
         </div>
         <div className="Todo">
           { errorMessage && <span className="error">{errorMessage}</span> }
+          { message && <span className="success">{message}</span> }
           <TodoForm
             onChangeInput={this.handleInputChange}
             currentTodo={currentTodo}
