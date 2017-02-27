@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { TodoForm, TodoList, Footer } from './components/Todo';
-import { 
-  addTodo, generateId, findById, 
-  toggleTodo, updateTodo, removeTodo } from './lib/todoHelpers';
+import {
+  addTodo, generateId, findById,
+  toggleTodo, updateTodo, removeTodo,
+  filterTodos } from './lib/todoHelpers';
 import {pipe, partial} from './lib/utils';
 
 
@@ -16,6 +17,10 @@ class App extends Component {
       { id: 2, text: 'Ship it!', isComplete: true }
     ],
     currentTodo: ''
+  }
+
+  static contextTypes = {
+    route: PropTypes.string
   }
 
   handleRemove = (id, evt) => {
@@ -43,8 +48,8 @@ class App extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const newTodo = {
-      id: generateId(), 
-      text: this.state.currentTodo, 
+      id: generateId(),
+      text: this.state.currentTodo,
       isComplete: false
     };
     this.setState({
@@ -65,6 +70,9 @@ class App extends Component {
     const { todos, currentTodo, errorMessage } = this.state;
 
     const submitHandler = currentTodo ? this.handleSubmit : this.handleEmptySubmit;
+    const displayTodos = filterTodos(todos, this.context.route)
+
+    console.log('displayTodos', displayTodos);
 
     return (
       <div className="App">
@@ -74,14 +82,14 @@ class App extends Component {
         </div>
         <div className="Todo">
           { errorMessage && <span className="error">{errorMessage}</span> }
-          <TodoForm 
+          <TodoForm
             onChangeInput={this.handleInputChange}
             currentTodo={currentTodo}
             refInput={(input) => this.inputValue = input}
             handleSubmit={submitHandler}
           />
-          <TodoList handleToggle={this.handleToggle} 
-            todos={todos}
+          <TodoList handleToggle={this.handleToggle}
+            todos={displayTodos}
             handleRemove={this.handleRemove} />
           <Footer />
         </div>

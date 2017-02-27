@@ -5,7 +5,7 @@ const getCurrentPath = () => {
 	return path.substring(path.lastIndexOf('/'))
 }
 
-export default class Router extends Component {
+export class Router extends Component {
   state = {
   	route: getCurrentPath()
   }
@@ -13,7 +13,7 @@ export default class Router extends Component {
   handleLinkClick = (route) => {
   	this.setState({route});
   	history.pushState(null, '', route);
-  }	
+  }
 
   static childContextTypes = {
   	route: PropTypes.string,
