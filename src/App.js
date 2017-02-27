@@ -12,9 +12,9 @@ import {pipe, partial} from './lib/utils';
 class App extends Component {
   state = {
     todos: [
-      { id: 0, text: 'Learn', isComplete: false },
+      { id: 0, text: 'Learn JSX', isComplete: true },
       { id: 1, text: 'Build an Awesome App', isComplete: false },
-      { id: 2, text: 'Ship it!', isComplete: true }
+      { id: 2, text: 'Ship it!', isComplete: false }
     ],
     currentTodo: ''
   }
