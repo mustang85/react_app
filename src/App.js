@@ -7,15 +7,12 @@ import {
   toggleTodo, updateTodo, removeTodo,
   filterTodos } from './lib/todoHelpers';
 import {pipe, partial} from './lib/utils';
+import {loadTodos} from './lib/todoService';
 
 
 class App extends Component {
   state = {
-    todos: [
-      { id: 0, text: 'Learn JSX', isComplete: true },
-      { id: 1, text: 'Build an Awesome App', isComplete: false },
-      { id: 2, text: 'Ship it!', isComplete: false }
-    ],
+    todos: [],
     currentTodo: ''
   }
 
@@ -64,6 +61,12 @@ class App extends Component {
     this.setState({
       errorMessage: 'Please supply a todo name'
     });
+  }
+
+  componentDidMount() {
+    loadTodos()
+      .then(todos => this.setState({todos}))
+
   }
 
   render() {
