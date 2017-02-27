@@ -1,16 +1,6 @@
 {
   "todos": [
     {
-      "id": 1,
-      "text": "Setup Server",
-      "isComplete": true
-    },
-    {
-      "id": 2,
-      "text": "Start Server",
-      "isComplete": true
-    },
-    {
       "id": 3,
       "text": "Connect to Server",
       "isComplete": false
@@ -18,51 +8,6 @@
     {
       "id": 4,
       "text": "Setup fetch",
-      "isComplete": false
-    },
-    {
-      "id": 4086,
-      "text": "new todo",
-      "isComplete": true
-    },
-    {
-      "id": 4604,
-      "text": "new todddo",
-      "isComplete": true
-    },
-    {
-      "id": 65467,
-      "text": "tod7",
-      "isComplete": false
-    },
-    {
-      "id": 61421,
-      "text": "nwq roro",
-      "isComplete": true
-    },
-    {
-      "id": 61558,
-      "text": "asgda",
-      "isComplete": false
-    },
-    {
-      "id": 65240,
-      "text": "asdfa",
-      "isComplete": false
-    },
-    {
-      "id": 78058,
-      "text": "asdfa",
-      "isComplete": false
-    },
-    {
-      "id": 92421,
-      "text": "asdg",
-      "isComplete": false
-    },
-    {
-      "id": 37854,
-      "text": "avd",
       "isComplete": false
     }
   ]
