@@ -16,9 +16,11 @@ export const updateTodo = (list, updated) => {
 };
 
 export const removeTodo = (list, id) => {
-  const currentList = [...list];
-  currentList.splice(id-1, 1);
-  return currentList;
+  const removeIndex = list.findIndex(item => item.id === id);
+  return [
+    ...list.slice(0, removeIndex),
+    ...list.slice(removeIndex+1)
+  ]
 }
 
 export const filterTodos = (list, route) => {

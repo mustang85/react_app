@@ -84,6 +84,7 @@ class App extends Component {
     const submitHandler = currentTodo ? this.handleSubmit : this.handleEmptySubmit;
     const displayTodos = filterTodos(todos, this.context.route)
 
+    console.log('this.context.route', this.context.route);
     console.log('displayTodos', displayTodos);
 
     return (

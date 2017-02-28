@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 
 export class Link extends Component {
-	static contextTypes = {
+  static contextTypes = {
     route: PropTypes.string,
   	linkHandler: PropTypes.func
   }
